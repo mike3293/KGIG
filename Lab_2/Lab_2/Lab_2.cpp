@@ -27,8 +27,7 @@ END_MESSAGE_MAP()
 
 void CLab2App::LoadImageBMP() //ф-ция загрузки изображения с диска в оперативную память
 {
-	CFileDialog fileDialog(true, NULL, L"");	//объект класса выбора файла
-	fileDialog.m_ofn.lpstrFilter = (LPCTSTR)"images (.bmp)\0*.bmp\0\0";
+	CFileDialog fileDialog(TRUE, NULL, L"");	//объект класса выбора файла
 	int result = fileDialog.DoModal();	//запустить диалоговое окно
 	if (result == IDOK)	//если файл выбран
 	{
@@ -53,7 +52,6 @@ void CLab2App::InitAreaSaving()
 void CLab2App::SaveArea() //сохранения области изображения
 {
 	CFileDialog fileDialog(FALSE, NULL, L"area.bmp");	//объект класса выбора файла
-	fileDialog.m_ofn.lpstrFilter = (LPCTSTR)"images (.bmp)\0*.bmp\0\0";
 	int result = fileDialog.DoModal();	//запустить диалоговое окно
 	if (result == IDOK)	//если файл выбран
 	{
@@ -75,7 +73,7 @@ void CLab2App::SaveArea() //сохранения области изображе
 		r.top = From.y;
 		r.bottom = To.y;
 
-		if (ClientRectToBmp(hwnd, LPSTR(fileDialog.GetPathName().GetBuffer()), r) == 0)
+		if (ClientToBmp(hwnd, r, LPSTR(fileDialog.GetPathName().GetBuffer())) == 0)
 			AfxMessageBox(L"Saved");
 		else
 			AfxMessageBox(L"Error");

@@ -28,7 +28,7 @@ int ShowBitMap(HWND hWnd, HANDLE hBit, int x, int y)
 	return 0;
 }
 
-int ClientRectToBmp(HWND hWnd, char* name, RECT r) //ф-ция рабочей области
+int ClientToBmp(HWND hWnd, RECT r, char* name) //ф-ция рабочей области
 {
 	HANDLE fh = CreateFile((LPCTSTR)name, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
 	if (fh == INVALID_HANDLE_VALUE)
